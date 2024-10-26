@@ -8,7 +8,7 @@ self:
 let
   inherit (lib) mkMerge types;
   inherit (lib.modules) mkIf;
-  inherit (lib.options) mkOption mkEnableOption mkPackageOption;
+  inherit (lib.options) mkOption mkEnableOption;
 
   package = self.packages.${pkgs.system}.snowy-shell;
   cfg = config.programs.snowy-shell;
@@ -16,10 +16,6 @@ in
 {
   options.programs.snowy-shell = {
     enable = mkEnableOption "Snowy wayland shell";
-
-    package = mkPackageOption package {
-      default = package;
-    };
 
     systemd.enable = mkOption {
       type = types.bool;
@@ -42,7 +38,7 @@ in
         };
 
         Service = {
-          ExecStart = "${cfg.package}/bin/snowy-shell";
+          ExecStart = "${package}/bin/snowy-shell";
           Restart = "on-failure";
           KillMode = "mixed";
         };
