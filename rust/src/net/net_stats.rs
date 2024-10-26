@@ -1,4 +1,4 @@
-use std::process::exit;
+use std::{process::exit, thread::sleep, time::Duration};
 
 use sysinfo::Networks;
 
@@ -6,6 +6,8 @@ pub fn print_tx(iface: String) {
     let mut networks = Networks::new_with_refreshed_list();
 
     let mut iface_found: bool = false;
+
+    sleep(Duration::from_millis(10));
 
     networks.refresh();
 
@@ -26,6 +28,8 @@ pub fn print_rx(iface: String) {
     let mut networks = Networks::new_with_refreshed_list();
 
     let mut iface_found: bool = false;
+
+    sleep(Duration::from_millis(0));
 
     networks.refresh();
 
