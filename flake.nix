@@ -14,7 +14,8 @@
       astal,
     }:
     let
-      genSystems = nixpkgs.lib.genAttrs [
+      inherit (nixpkgs) lib;
+      genSystems = lib.genAttrs [
         "x86_64-linux"
         "aarch64-linux"
       ];
@@ -47,26 +48,13 @@
         {
           default = self.packages.${system}.snowy-shell;
           snowy-utils = pkgs.callPackage ./rust/package.nix { };
-          snowy-shell = astal.lib.mkLuaPackage {
-            inherit pkgs;
-            src = ./.;
-
-            name = "snowy-shell";
-
-            extraPackages =
-              [
-                pkgs.dart-sass
-                self.packages.${system}.snowy-utils
-              ]
-              ++ (with astal.packages.${system}; [
-                hyprland
-                astal3
-                network
-                tray
-                wireplumber
-                mpris
-                bluetooth
-              ]);
+          snowy-shell = pkgs.callPackage ./nix/package.nix {
+            inherit
+              self
+              astal
+              system
+              pkgs
+              ;
           };
         }
       );
