@@ -1,0 +1,57 @@
+@import './workspaces.scss';
+
+window.Bar {
+  border: none;
+  box-shadow: none;
+  background-color: $base00;
+  color: $base04;
+  border-radius: 10px;
+  font-size: 17px;
+  font-weight: bold;
+
+  button {
+    all: unset;
+    background-color: transparent;
+
+    &:hover label {
+      background-color: transparentize($base02, 0.84);
+      border-color: transparentize($base04, 0.8);
+    }
+
+    &:active label {
+      background-color: transparentize($base02, 0.8);
+    }
+  }
+
+  label {
+    transition: 200ms;
+    padding: 0 8px;
+    margin: 2px;
+    border-radius: $radius;
+    border: 1pt solid transparent;
+  }
+
+  .Media .Cover {
+    min-height: 1.2em;
+    min-width: 1.2em;
+    border-radius: $radius;
+    background-position: center;
+    background-size: contain;
+  }
+
+  .audio-slider {
+    min-width: 6.25em;
+    margin-right: 0.625em;
+
+    trough {
+      background-color: $base03;
+      border-radius: 10px;
+    }
+
+    highlight {
+      background-color: $base09;
+      min-height: 0.75em;
+      border-radius: 1.25em;
+    }
+  }
+}
