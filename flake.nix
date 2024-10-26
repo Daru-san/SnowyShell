@@ -22,6 +22,11 @@
       pkgsFor = nixpkgs.legacyPackages;
     in
     {
+      homeManagerModules = {
+        default = self.homeManagerModules.snowy-shell;
+        snowy-shell = import ./nix/hm-module.nix self;
+      };
+
       devShells = genSystems (
         system:
         let
