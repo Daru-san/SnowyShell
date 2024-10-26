@@ -1,0 +1,10 @@
+name: Cachix-push
+on:
+  push:
+    branches: ['master']
+  workflow_dispatch:
+jobs:
+  build:
+    name: nix build
+    uses: ./.github/workflows/cachix-build.yml
+    secrets: inherit
