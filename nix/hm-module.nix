@@ -31,27 +31,26 @@ in
     };
   };
 
-  config = mkIf cfg.enable (
-    mkMerge { home.packages = [ package ]; } [
-      (mkIf cfg.systemd.enable {
-        systemd.user.services.snowy-shell = {
-          Unit = {
-            Description = "A wayland shell";
-            PartOf = [ "graphical-session.target" ];
-            After = [ "graphical-session-pre.target" ];
-          };
-
-          Service = {
-            ExecStart = "${cfg.package}/bin/snowy-shell";
-            Restart = "on-failure";
-            KillMode = "mixed";
-          };
-
-          Install = {
-            WantedBy = [ "graphical-session.target" ];
-          };
+  config = mkIf cfg.enable (mkMerge [
+    { home.packages = [ package ]; }
+    (mkIf cfg.systemd.enable {
+      systemd.user.services.snowy-shell = {
+        Unit = {
+          Description = "A wayland shell";
+          PartOf = [ "graphical-session.target" ];
+          After = [ "graphical-session-pre.target" ];
         };
-      })
-    ]
-  );
+
+        Service = {
+          ExecStart = "${cfg.package}/bin/snowy-shell";
+          Restart = "on-failure";
+          KillMode = "mixed";
+        };
+
+        Install = {
+          WantedBy = [ "graphical-session.target" ];
+        };
+      };
+    })
+  ]);
 }
