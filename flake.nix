@@ -34,6 +34,7 @@
               pkg-config
               clippy
               rustfmt
+              self.packages.${system}.snowy-utils
             ];
           };
         }
@@ -44,15 +45,18 @@
           pkgs = pkgsFor.${system};
         in
         {
-          rust-lib = pkgs.callPackage ./rust/package.nix { };
-          default = astal.lib.mkLuaPackage {
+          default = self.packages.${system}.snowy-shell;
+          snowy-utils = pkgs.callPackage ./rust/package.nix { };
+          snowy-shell = astal.lib.mkLuaPackage {
             inherit pkgs;
             src = ./.;
+
+            name = "snowy-shell";
 
             extraPackages =
               [
                 pkgs.dart-sass
-                self.packages.${system}.rust-lib
+                self.packages.${system}.snowy-utils
               ]
               ++ (with astal.packages.${system}; [
                 hyprland
