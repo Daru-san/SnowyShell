@@ -25,7 +25,7 @@ pub fn cpu_core_usage(core_index: i32) -> f32 {
 
     let core_count = num_cpus::get() as i32;
 
-    assert!(core_index <= core_count && core_index >= 1);
+    assert!(core_index <= core_count && core_index >= 0);
 
     let cpu_core: &Cpu = &sys.cpus()[core_index as usize];
 
