@@ -1,8 +1,12 @@
 [package]
-name = "snowy-utils"
+name = "snowy-libs"
 version = "0.1.0"
 edition = "2021"
 
+[lib]
+crate-type = ["cdylib"]
+
 [dependencies]
-clap = {version = "4.5.20", features = ["env","derive"]}
+mlua = {version = "0.10.0",features = ["lua54", "module", "async"]}
+num_cpus = "1.16.0"
 sysinfo = "0.32.0"
