@@ -8,9 +8,10 @@ fn _find_iface(iface: &str, networks: &Networks) -> String {
         if interface_name == iface {
             iface_name = interface_name.to_string();
             break;
-        } else {
-            _print_iface_error(iface.to_string());
         }
+    }
+    if iface_name.is_empty() {
+        _print_iface_error(iface.to_string());
     }
     iface_name
 }
