@@ -14,12 +14,13 @@ pub fn cpu_usage() -> f32 {
 
 pub fn cpu_core_usage(core_index: i32) -> f32 {
     use num_cpus;
-    use sysinfo::{CpuRefreshKind, RefreshKind, System};
+
     let mut sys = System::new_with_specifics(
         RefreshKind::new().with_cpu(CpuRefreshKind::new().with_cpu_usage()),
     );
 
     std::thread::sleep(sysinfo::MINIMUM_CPU_UPDATE_INTERVAL);
+
     sys.refresh_cpu_usage();
 
     let core_count = num_cpus::get() as i32;
