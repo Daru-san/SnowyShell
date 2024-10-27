@@ -10,7 +10,7 @@ local css = "/tmp/style.css"
 astal.exec("sass " .. scss .. " " .. css)
 
 App:start({
-  instance_name = "lua",
+  instance_name = "snowy_shell_lua",
   css = css,
   request_handler = function(msg, res)
     print(msg)
