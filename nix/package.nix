@@ -4,6 +4,7 @@
   lib,
   system,
   self,
+  luaPackages,
   stdenvNoCC,
   makeWrapper,
   nix-gitignore,
@@ -22,6 +23,8 @@ let
       "rust/"
       "LICENSE"
     ] ../.;
+
+    extraLuaPackages = ps: [ luaPackages.snowy_utils ];
 
     extraPackages =
       [
@@ -58,7 +61,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     wrapProgram $out/bin/snowy-shell \
       --prefix PATH : ${
         lib.makeBinPath [
-          self.packages.${system}.snowy-utils
+          luaPackages.snowy_utils
         ]
       }
   '';
