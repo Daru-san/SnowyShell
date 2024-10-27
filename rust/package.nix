@@ -3,6 +3,7 @@
   luaPackages,
   rustPlatform,
   cargo,
+  pkg-config,
 }:
 let
   cargoToml = builtins.fromTOML (builtins.readFile ./Cargo.toml);
@@ -20,6 +21,7 @@ luaPackages.buildLuarocksPackage {
     luaPackages.luarocks-build-rust-mlua
     cargo
     rustPlatform.cargoSetupHook
+    pkg-config
   ];
 
   cargoDeps = rustPlatform.importCargoLock {
