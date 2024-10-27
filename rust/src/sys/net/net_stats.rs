@@ -1,13 +1,13 @@
-use std::{borrow::Borrow, process::exit, thread::sleep, time::Duration};
+use std::{thread::sleep, time::Duration};
 
 use sysinfo::Networks;
 
 pub fn tx_bytes(iface: impl Into<String>) -> u64 {
-    assert!(get_ifaces().contains(iface));
+    let interface = iface.into();
+
+    assert!(get_ifaces().contains(&interface));
 
     let mut networks = Networks::new_with_refreshed_list();
-
-    let interface = _find_iface(&iface.into(), networks.borrow());
 
     let mut tx_bytes = 0;
 
@@ -16,7 +16,7 @@ pub fn tx_bytes(iface: impl Into<String>) -> u64 {
     networks.refresh();
 
     for (interface_name, network) in &networks {
-        if interface_name == &iface {
+        if interface_name == &interface {
             tx_bytes = network.transmitted();
         }
     }
@@ -25,7 +25,9 @@ pub fn tx_bytes(iface: impl Into<String>) -> u64 {
 }
 
 pub fn rx_bytes(iface: impl Into<String>) -> u64 {
-    assert!(get_ifaces().contains(iface));
+    let interface = iface.into();
+
+    assert!(get_ifaces().contains(&interface));
 
     let mut networks = Networks::new_with_refreshed_list();
 
@@ -36,7 +38,7 @@ pub fn rx_bytes(iface: impl Into<String>) -> u64 {
     networks.refresh();
 
     for (interface_name, network) in &networks {
-        if interface_name == &iface {
+        if interface_name == &interface {
             rx_bytes = network.received();
         }
     }
