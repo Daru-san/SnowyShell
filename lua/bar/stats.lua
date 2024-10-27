@@ -2,33 +2,39 @@ local astal = require("astal")
 local bind = astal.bind
 local Variable = astal.Variable
 local Widget = require("astal.gtk3.widget")
+local utils = require("snowy_utils")
+
+local mem_usage = utils.mem_usage
+local cpu_usage = utils.cpu_usage
+
+local math = require("math")
 
 local function cpu_widget()
-  local cpu_usage = Variable(0):poll(2000, "snowy-utils cpu -d", function(out, prev)
-    return tostring(out)
+  local usage = Variable(0):poll(2000, "sleep 0", function(out, prev)
+    return tonumber(cpu_usage())
   end)
   return Widget.Box({
     class_name = "cpu",
     Widget.Label({
-      label = bind(cpu_usage):as(function(value)
-        return tostring("cpu:" .. (value * 100) .. "%")
+      label = bind(usage):as(function(value)
+        return tostring("cpu: " .. math.floor(value * 100) .. "%")
       end),
     }),
     on_destroy = function()
-      cpu_usage:drop()
+      usage:drop()
     end,
   })
 end
 
 local function mem_widget()
-  local ram_usage = Variable(0):poll(2000, "snowy-utils mem -d", function(out, prev)
-    return tonumber(out)
+  local ram_usage = Variable(0):poll(2000, "sleep 0", function(out, prev)
+    return tonumber(mem_usage())
   end)
   return Widget.Box({
     class_name = "mem",
     Widget.Label({
       label = bind(ram_usage):as(function(value)
-        return tostring("mem:" .. (value * 100) .. "%")
+        return tostring("mem: " .. math.floor(value * 100) .. "%")
       end),
     }),
     on_destroy = function()
