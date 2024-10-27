@@ -8,7 +8,14 @@ homepage = "https://github.com/Daru-san/SnowyShell"
 [lib]
 crate-type = ["cdylib"]
 
+[features]
+lua54 = ["mlua/lua54"]
+lua53 = ["mlua/lua53"]
+lua52 = ["mlua/lua52"]
+luajit = ["mlua/luajit"]
+lua51 = ["mlua/lua51"]
+
 [dependencies]
-mlua = {version = "0.10.0",features = ["lua54", "module", "async","lua53","lua52"]}
+mlua = {version = "0.10.0",features = ["module", "async"]}
 num_cpus = "1.16.0"
 sysinfo = "0.32.0"
