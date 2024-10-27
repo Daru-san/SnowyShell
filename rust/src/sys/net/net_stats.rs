@@ -7,6 +7,7 @@ fn _find_iface(iface: &str, networks: &Networks) -> String {
     for (interface_name, _network) in networks {
         if interface_name == iface {
             iface_name = interface_name.to_string();
+            break;
         } else {
             _print_iface_error(iface.to_string());
         }
