@@ -1,12 +1,14 @@
 [package]
-name = "snowy-libs"
+name = "snowy_utils"
 version = "0.1.0"
 edition = "2021"
+description = "Utilities used in snowy-shell"
+homepage = "https://github.com/Daru-san/SnowyShell"
 
 [lib]
 crate-type = ["cdylib"]
 
 [dependencies]
-mlua = {version = "0.10.0",features = ["lua54", "module", "async"]}
+mlua = {version = "0.10.0",features = ["lua54", "module", "async","lua53","lua52"]}
 num_cpus = "1.16.0"
 sysinfo = "0.32.0"
