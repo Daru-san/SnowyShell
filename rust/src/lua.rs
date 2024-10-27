@@ -29,8 +29,8 @@ fn snowy_utils(lua: &Lua) -> LuaResult<LuaTable> {
     net_table.set("rx_bytes", LuaFunction::wrap_raw::<_, (String,)>(tx_bytes))?;
 
     let exports = lua.create_table()?;
-    exports.set("memory", LuaTable::from(mem_table))?;
-    exports.set("cpu", LuaTable::from(cpu_table))?;
-    exports.set("network", LuaTable::from(net_table))?;
+    exports.set("memory", mem_table)?;
+    exports.set("cpu", cpu_table)?;
+    exports.set("network", net_table)?;
     Ok(exports)
 }
