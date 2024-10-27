@@ -2,16 +2,15 @@ local astal = require("astal")
 local bind = astal.bind
 local Variable = astal.Variable
 local Widget = require("astal.gtk3.widget")
+
 local utils = require("snowy_utils")
-
-local mem_usage = utils.mem_usage
-local cpu_usage = utils.cpu_usage
-
-local math = require("math")
+local cpu = utils.cpu
+local mem = utils.memory
+local net = utils.network
 
 local function cpu_widget()
-  local usage = Variable(0):poll(2000, "sleep 0", function(out, prev)
-    return tonumber(cpu_usage())
+  local usage = Variable(0):poll(2000, function()
+    return tonumber(cpu.cpu_usage())
   end)
   return Widget.Box({
     class_name = "cpu",
@@ -27,8 +26,8 @@ local function cpu_widget()
 end
 
 local function mem_widget()
-  local ram_usage = Variable(0):poll(2000, "sleep 0", function(out, prev)
-    return tonumber(mem_usage())
+  local ram_usage = Variable(0):poll(2000, function()
+    return tonumber(mem.mem_usage())
   end)
   return Widget.Box({
     class_name = "mem",
@@ -44,24 +43,26 @@ local function mem_widget()
 end
 
 local function net_widget()
-  local net_rx = Variable(""):poll(2000, "snowy-utils net -i wlan0 -r", function(out, prev)
-    return tostring(out)
+  local iface = "wlan0"
+
+  local net_rx = Variable(0):poll(2000, function()
+    return tonumber(net.rx_bytes(iface))
   end)
 
-  local net_tx = Variable(""):poll(2000, "snowy-utils net -i wlan0 -t", function(out, prev)
-    return tostring(out)
+  local net_tx = Variable(0):poll(2000, function()
+    return tonumber(net.tx_bytes(iface))
   end)
 
   return Widget.Box({
     class_name = "net",
     Widget.Label({
       label = bind(net_tx):as(function(value)
-        return tostring("rx:" .. value)
+        return tostring("rx: " .. value .. "B")
       end),
     }),
     Widget.Label({
       label = bind(net_rx):as(function(value)
-        return tostring("tx:" .. value)
+        return tostring("tx: " .. value .. "B")
       end),
     }),
     on_destroy = function()
