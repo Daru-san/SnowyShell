@@ -23,22 +23,16 @@ pub fn cpu_core_usage(core_index: i32) -> f32 {
     sys.refresh_cpu_usage();
 
     let core_count = num_cpus::get() as i32;
-    let mut i: i32 = 0;
-    let mut cpu_usage = -1.0;
-    for cpu in sys.cpus() {
-        i += 1;
-        if i == core {
-            cpu_usage = cpu.cpu_usage();
-        }
-        if i == core_count {
-            break;
-        }
-    }
-    cpu_usage
+
+    assert!(core_index <= core_count && core_index >= 1);
+
+    let cpu_core: &Cpu = &sys.cpus()[core_index as usize];
+
+    cpu_core.cpu_usage()
 }
 
 pub fn core_count() -> u32 {
     use num_cpus;
-    
+
     num_cpus::get_physical().try_into().unwrap()
 }
