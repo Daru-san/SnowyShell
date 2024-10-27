@@ -19,10 +19,10 @@ fn _print_iface_error(iface: String) {
     exit(0)
 }
 
-pub fn tx_bytes(iface: String) -> i32 {
+pub fn tx_bytes(iface: impl Into<String>) -> u64 {
     let mut networks = Networks::new_with_refreshed_list();
 
-    let interface = _find_iface(&iface, networks.borrow());
+    let interface = _find_iface(&iface.into(), networks.borrow());
 
     let mut tx_bytes = 0;
 
@@ -36,13 +36,13 @@ pub fn tx_bytes(iface: String) -> i32 {
         }
     }
 
-    tx_bytes.try_into().unwrap()
+    tx_bytes
 }
 
-pub fn rx_bytes(iface: String) -> i32 {
+pub fn rx_bytes(iface: impl Into<String>) -> u64 {
     let mut networks = Networks::new_with_refreshed_list();
 
-    let interface = _find_iface(&iface, networks.borrow());
+    let interface = _find_iface(&iface.into(), networks.borrow());
 
     let mut rx_bytes = 0;
 
@@ -56,7 +56,7 @@ pub fn rx_bytes(iface: String) -> i32 {
         }
     }
 
-    rx_bytes.try_into().unwrap()
+    rx_bytes
 }
 
 pub fn get_ifaces() -> String {
