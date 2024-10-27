@@ -1,4 +1,4 @@
-use sysinfo::System;
+use sysinfo::{MemoryRefreshKind, RefreshKind, System};
 
 pub fn total_memory() -> i32 {
     let mut sys = System::new();
@@ -15,7 +15,9 @@ pub fn used_memory() -> i32 {
 }
 
 pub fn memory_usage() -> f32 {
-    let mut sys = System::new();
+    let mut sys = System::new_with_specifics(
+        RefreshKind::new().with_memory(MemoryRefreshKind::new().with_ram()),
+    );
     sys.refresh_memory();
 
     let used = sys.used_memory() as f32;
@@ -25,7 +27,9 @@ pub fn memory_usage() -> f32 {
 }
 
 pub fn total_swap() -> i32 {
-    let mut sys = System::new();
+    let mut sys = System::new_with_specifics(
+        RefreshKind::new().with_memory(MemoryRefreshKind::new().with_swap()),
+    );
     sys.refresh_memory();
 
     sys.total_swap().try_into().unwrap()
