@@ -62,6 +62,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
       --prefix PATH : ${
         lib.makeBinPath [
           luaPackages.snowy_utils
+          luaPackages.stdlib
         ]
       }
   '';

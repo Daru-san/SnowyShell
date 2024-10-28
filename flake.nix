@@ -55,11 +55,16 @@
               pkg-config
               clippy
               rustfmt
-              (lua.withPackages (ps: [ luaPackages.snowy_utils ]))
+              (lua.withPackages (
+                ps: with ps; [
+                  stdlib
+                ]
+              ))
               luarocks
               luarocks-nix
               luaPackages.luarocks-build-rust-mlua
               luaPackages.snowy_utils
+              luaPackages.stdlib
             ];
           };
         }
