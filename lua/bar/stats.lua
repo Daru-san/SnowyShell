@@ -8,6 +8,9 @@ local cpu = utils.cpu
 local mem = utils.memory
 local net = utils.network
 
+local math = require("std.math")
+local string = require("std.string")
+
 local function cpu_widget()
   local usage = Variable(0):poll(2000, function()
     return tonumber(cpu.cpu_usage())
@@ -16,7 +19,7 @@ local function cpu_widget()
     class_name = "cpu",
     Widget.Label({
       label = bind(usage):as(function(value)
-        return tostring("cpu: " .. math.floor(value * 100) .. "%")
+        return tostring("cpu: " .. math.round(value * 100, 0) .. "%")
       end),
     }),
     on_destroy = function()
@@ -33,7 +36,7 @@ local function mem_widget()
     class_name = "mem",
     Widget.Label({
       label = bind(ram_usage):as(function(value)
-        return tostring("mem: " .. math.floor(value * 100) .. "%")
+        return tostring("mem: " .. math.round(value * 100) .. "%")
       end),
     }),
     on_destroy = function()
@@ -45,11 +48,11 @@ end
 local function net_widget()
   local iface = "wlan0"
 
-  local net_rx = Variable(0):poll(2000, function()
+  local net_rx = Variable(0):poll(500, function()
     return tonumber(net.rx_bytes(iface))
   end)
 
-  local net_tx = Variable(0):poll(2000, function()
+  local net_tx = Variable(0):poll(500, function()
     return tonumber(net.tx_bytes(iface))
   end)
 
@@ -57,12 +60,12 @@ local function net_widget()
     class_name = "net",
     Widget.Label({
       label = bind(net_tx):as(function(value)
-        return tostring("rx: " .. value .. "B")
+        return tostring("rx: " .. string.numbertosi(value) .. "bps")
       end),
     }),
     Widget.Label({
       label = bind(net_rx):as(function(value)
-        return tostring("tx: " .. value .. "B")
+        return tostring("tx: " .. string.numbertosi(value) .. "bps")
       end),
     }),
     on_destroy = function()
