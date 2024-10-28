@@ -24,7 +24,11 @@ let
       "LICENSE"
     ] ../.;
 
-    extraLuaPackages = ps: [ luaPackages.snowy_utils ];
+    extraLuaPackages =
+      ps: with ps; [
+        luaPackages.snowy_utils
+        stdlib
+      ];
 
     extraPackages =
       [
