@@ -22,10 +22,16 @@ return function()
       return string.format("%.0f%%", v * 100)
     end),
     on_scroll = function(_, event)
-      if event.delta_y < -1 then
-        speaker.volume = speaker.volume + 0.05
-      elseif event.delta_y > -1 then
-        speaker.volume = speaker.volume - 0.05
+      if speaker.volume <= 1 and speaker.volume >= 0 then
+        if event.delta_y < -1 then
+          speaker.volume = speaker.volume + 0.05
+        elseif event.delta_y > -1 then
+          speaker.volume = speaker.volume - 0.05
+        end
+      elseif speaker.volume > 1 then
+        speaker.volume = 1
+      elseif speaker.volume < 0 then
+        speaker.volume = 0
       end
     end,
     Widget.Box({
