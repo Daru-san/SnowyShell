@@ -21,6 +21,13 @@ return function()
     tooltip_text = bind(speaker, "volume"):as(function(v)
       return string.format("%.0f%%", v * 100)
     end),
+    on_scroll = function(_, event)
+      if event.delta_y < -1 then
+        speaker.volume = speaker.volume + 0.05
+      elseif event.delta_y > -1 then
+        speaker.volume = speaker.volume - 0.05
+      end
+    end,
     Widget.Box({
       Widget.Revealer({
         reveal_child = scroll_revealed(),
