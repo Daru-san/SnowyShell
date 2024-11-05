@@ -35,14 +35,13 @@ return function(gdkmonitor)
     Widget.CenterBox({
       Widget.Box({
         halign = "START",
-        -- Workspaces(),
+        SysStats(),
       }),
       Widget.Box({
         MediaPlayer(),
       }),
       Widget.Box({
         halign = "END",
-        SysStats(),
         Indicators(),
         Tray(),
         Time("%H:%M:%S"),
