@@ -4,7 +4,7 @@ local Variable = astal.Variable
 local GLib = astal.require("GLib")
 
 local Tray = require("lua.bar.tray")
-local Workspaces = require("lua.bar.workspaces")
+-- local Workspaces = require("lua.bar.workspaces")
 local Indicators = require("lua.bar.indicators")
 local MediaPlayer = require("lua.bar.media")
 local SysStats = require("lua.bar.stats")
@@ -35,7 +35,7 @@ return function(gdkmonitor)
     Widget.CenterBox({
       Widget.Box({
         halign = "START",
-        Workspaces(),
+        -- Workspaces(),
       }),
       Widget.Box({
         MediaPlayer(),
