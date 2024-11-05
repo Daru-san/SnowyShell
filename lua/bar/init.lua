@@ -8,6 +8,7 @@ local Tray = require("lua.bar.tray")
 local Indicators = require("lua.bar.indicators")
 local MediaPlayer = require("lua.bar.media")
 local SysStats = require("lua.bar.stats")
+local Notifs = require("lua.bar.notification")
 
 local function Time(format)
   local time = Variable(""):poll(1000, function()
@@ -45,6 +46,7 @@ return function(gdkmonitor)
         Indicators(),
         Tray(),
         Time("%H:%M:%S"),
+        Notifs(),
       }),
     }),
   })
