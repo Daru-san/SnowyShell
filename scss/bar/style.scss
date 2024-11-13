@@ -54,4 +54,28 @@ window.Bar {
       border-radius: 1.25em;
     }
   }
+
+  .stats {
+    background-color: shade($base09, 0.3);
+    border-radius: $radius;
+
+    label {
+      background-color: shade($base09, 0.5);
+    }
+  }
+
+  .Media {
+    padding-right: 3px;
+    padding-left: 3px;
+    border-radius: $radius;
+    background-color: shade($base0B, 0.3);
+
+    label {
+      background-color: shade($base0D, 0.8);
+    }
+  }
+
+  .Time {
+    background-color: shade($base09, 0.6);
+  }
 }
