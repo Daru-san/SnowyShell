@@ -1,5 +1,6 @@
 {
   astal,
+  astal-niri,
   pkgs,
   lib,
   system,
@@ -42,7 +43,7 @@ let
         wireplumber
         mpris
         bluetooth
-      ]);
+      ]) ++ [astal-niri.packages.${system}.niri];
   };
 in
 stdenvNoCC.mkDerivation (finalAttrs: {

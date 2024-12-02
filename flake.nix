@@ -5,6 +5,10 @@
       url = "github:aylur/astal";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    astal-niri = {
+      url = "github:/sameoldlab/astal/feat/niri";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -12,6 +16,7 @@
       self,
       nixpkgs,
       astal,
+      astal-niri,
     }:
     let
       inherit (nixpkgs) lib;
@@ -85,6 +90,7 @@
               astal
               system
               pkgs
+              astal-niri
               ;
           };
         }
