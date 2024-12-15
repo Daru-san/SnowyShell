@@ -51,6 +51,11 @@ return function()
           icon = bind(speaker, "volume-icon"),
         }),
       }),
+      Widget.Label({
+        label = bind(speaker, "volume"):as(function(v)
+          return string.format("%.0f%%", v * 100)
+        end)
+      }),
     }),
   })
 end
