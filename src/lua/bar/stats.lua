@@ -61,13 +61,10 @@ local function net_widget()
   return Widget.Box({
     class_name = "net",
     Widget.Label({
-      label = bind(net_tx):as(function(value)
-        return tostring("rx: " .. string.numbertosi(value) .. "bps")
-      end),
-    }),
-    Widget.Label({
-      label = bind(net_rx):as(function(value)
-        return tostring("tx: " .. string.numbertosi(value) .. "bps")
+      label = bind(net_tx):as(function(rx)
+        bind(net_tx):as(function(tx)
+          return tostring(string.numbertosi(rx) .. "bps" + string.numbertosi(tx) .. "bps")
+        end)
       end),
     }),
     on_destroy = function()
@@ -80,7 +77,7 @@ end
 return function()
   return Widget.Box({
     class_name = "stats",
-    net_widget(),
+    -- net_widget(),
     cpu_widget(),
     mem_widget(),
   })
