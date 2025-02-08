@@ -1,5 +1,5 @@
 rockspec_format = "3.0"
-package = "snowy_utils"
+package = "sysinfo"
 version = "dev-1"
 
 source = {
@@ -23,6 +23,6 @@ build = {
   type = "rust-mlua",
 
   modules = {
-    "snowy_utils",
+    "sysinfo",
   },
 }
