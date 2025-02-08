@@ -33,6 +33,7 @@ let
         wireplumber
         mpris
         bluetooth
+        notifd
       ]);
   };
 in
