@@ -2,13 +2,12 @@
   astal,
   pkgs,
   lib,
-  system,
-  self,
   luaPackages,
   stdenvNoCC,
   makeWrapper,
 }:
 let
+  inherit (pkgs) system;
   snowy-shell = astal.lib.mkLuaPackage {
     name = "snowy-shell";
 

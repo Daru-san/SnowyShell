@@ -80,12 +80,7 @@
         {
           default = self.packages.${system}.snowy-shell;
           snowy-shell = pkgs.callPackage ./nix/package.nix {
-            inherit
-              self
-              astal
-              system
-              pkgs
-              ;
+            inherit astal pkgs;
           };
         }
       );
