@@ -1,0 +1,19 @@
+[package]
+name = "idle-inhbitor"
+version = "0.1.0"
+edition = "2021"
+description = "Idle inhibitor used in SnowyShell"
+homepage = "https://github.com/Daru-san/SnowyShell"
+
+[lib]
+crate-type = ["cdylib"]
+
+[features]
+lua54 = ["mlua/lua54"]
+lua53 = ["mlua/lua53"]
+lua52 = ["mlua/lua52"]
+luajit = ["mlua/luajit"]
+lua51 = ["mlua/lua51"]
+
+[dependencies]
+mlua = { version = "0.10.0", features = ["module", "async"] }
