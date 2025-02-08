@@ -26,7 +26,7 @@
         let
           lua = prev.lua.override {
             packageOverrides = luaself: luaprev: {
-              sysinfo = prev.callPackage ./crates/sysinfo { };
+              sysinfo = prev.callPackage ./crates/sysinfo/package.nix { };
             };
           };
         in
