@@ -2,6 +2,7 @@ local astal = require("astal")
 local App = require("astal.gtk3.app")
 
 local Bar = require("lua.bar.init")
+local NotifPopups = require("lua.notif.popups")
 local src = require("lua.lib").src
 
 local scss = src("style.scss")
@@ -19,6 +20,7 @@ App:start({
   main = function()
     for _, mon in pairs(App.monitors) do
       Bar(mon)
+      NotifPopups(mon)
     end
   end,
 })
