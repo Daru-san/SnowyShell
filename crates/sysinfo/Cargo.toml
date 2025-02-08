@@ -18,4 +18,4 @@ lua51 = ["mlua/lua51"]
 [dependencies]
 mlua = { version = "0.10.0", features = ["module", "async"] }
 num_cpus = "1.16.0"
-sysinfo = "0.32.0"
+sysinfo = "0.33.0"
