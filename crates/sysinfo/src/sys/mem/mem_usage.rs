@@ -1,14 +1,18 @@
 use sysinfo::{MemoryRefreshKind, RefreshKind, System};
 
 pub fn total_memory() -> u64 {
-    let mut sys = System::new();
+    let mut sys = System::new_with_specifics(
+        RefreshKind::nothing().with_memory(MemoryRefreshKind::nothing().with_ram()),
+    );
     sys.refresh_memory();
 
     sys.total_memory()
 }
 
 pub fn used_memory() -> u64 {
-    let mut sys = System::new();
+    let mut sys = System::new_with_specifics(
+        RefreshKind::nothing().with_memory(MemoryRefreshKind::nothing().with_ram()),
+    );
     sys.refresh_memory();
 
     sys.used_memory()
