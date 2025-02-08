@@ -56,7 +56,7 @@ stdenvNoCC.mkDerivation (finalAttrs: {
     wrapProgram $out/bin/snowy-shell \
       --prefix PATH : ${
         lib.makeBinPath [
-          luaPackages.snowy_utils
+          luaPackages.sysinfo
           luaPackages.stdlib
         ]
       }
