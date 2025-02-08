@@ -26,7 +26,7 @@ let
 
     extraLuaPackages =
       ps: with ps; [
-        luaPackages.snowy_utils
+        luaPackages.sysinfo
         stdlib
       ];
 

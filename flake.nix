@@ -26,7 +26,7 @@
         let
           lua = prev.lua.override {
             packageOverrides = luaself: luaprev: {
-              snowy_utils = prev.callPackage ./rust/package.nix { };
+              sysinfo = prev.callPackage ./crates/sysinfo { };
             };
           };
         in
@@ -63,7 +63,7 @@
               luarocks
               luarocks-nix
               luaPackages.luarocks-build-rust-mlua
-              luaPackages.snowy_utils
+              luaPackages.sysinfo
               luaPackages.stdlib
             ];
           };

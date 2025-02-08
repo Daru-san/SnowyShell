@@ -1,8 +1,8 @@
 [package]
-name = "snowy_utils"
+name = "sysinfo"
 version = "0.1.0"
 edition = "2021"
-description = "Utilities used in snowy-shell"
+description = "System info utilities used in SnowyShell"
 homepage = "https://github.com/Daru-san/SnowyShell"
 
 [lib]
@@ -16,6 +16,6 @@ luajit = ["mlua/luajit"]
 lua51 = ["mlua/lua51"]
 
 [dependencies]
-mlua = {version = "0.10.0",features = ["module", "async"]}
+mlua = { version = "0.10.0", features = ["module", "async"] }
 num_cpus = "1.16.0"
 sysinfo = "0.32.0"

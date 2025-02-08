@@ -15,7 +15,7 @@ luaPackages.buildLuarocksPackage {
 
   disabled = luaPackages.luaOlder "5.1";
 
-  knownRockSpec = ./snowy_utils-dev-1.rockspec;
+  knownRockSpec = ./sysinfo-dev-1.rockspec;
 
   propagatedBuildInputs = [
     luaPackages.luarocks-build-rust-mlua
