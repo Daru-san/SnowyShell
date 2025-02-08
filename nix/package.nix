@@ -7,7 +7,6 @@
   luaPackages,
   stdenvNoCC,
   makeWrapper,
-  nix-gitignore,
 }:
 let
   snowy-shell = astal.lib.mkLuaPackage {
@@ -15,14 +14,7 @@ let
 
     inherit pkgs;
 
-    src = nix-gitignore.gitignoreSourcePure [
-      "nix/"
-      "README.md"
-      "*.nix"
-      "*.lock"
-      "rust/"
-      "LICENSE"
-    ] ../.;
+    src = ../src;
 
     extraLuaPackages =
       ps: with ps; [

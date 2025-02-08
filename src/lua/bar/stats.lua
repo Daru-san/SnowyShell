@@ -3,7 +3,7 @@ local bind = astal.bind
 local Variable = astal.Variable
 local Widget = require("astal.gtk3.widget")
 
-local utils = require("snowy_utils")
+local utils = require("sysinfo")
 local cpu = utils.cpu
 local mem = utils.memory
 local net = utils.network
@@ -30,7 +30,9 @@ end
 
 local function mem_widget()
   local ram_usage = Variable(0):poll(2000, function()
-    return tonumber(mem.mem_usage())
+    local used = string.numbertosi(mem.used_memory()) .. 'MB';
+    local total = string.numbertosi(mem.total_memory()) .. 'MB';
+    return tostring(used .. "/" .. total)
   end)
   return Widget.Box({
     class_name = "mem",
