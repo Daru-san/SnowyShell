@@ -13,7 +13,7 @@ pub fn tx_bytes(iface: impl Into<String>) -> u64 {
 
     sleep(Duration::from_millis(10));
 
-    networks.refresh();
+    networks.refresh(true);
 
     for (interface_name, network) in &networks {
         if interface_name == &interface {
@@ -35,7 +35,7 @@ pub fn rx_bytes(iface: impl Into<String>) -> u64 {
 
     sleep(Duration::from_millis(10));
 
-    networks.refresh();
+    networks.refresh(true);
 
     for (interface_name, network) in &networks {
         if interface_name == &interface {

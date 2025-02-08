@@ -2,7 +2,7 @@ use sysinfo::{Cpu, CpuRefreshKind, RefreshKind, System};
 
 pub fn cpu_usage() -> f32 {
     let mut sys = System::new_with_specifics(
-        RefreshKind::new().with_cpu(CpuRefreshKind::new().with_cpu_usage()),
+        RefreshKind::nothing().with_cpu(CpuRefreshKind::nothing().with_cpu_usage()),
     );
 
     std::thread::sleep(sysinfo::MINIMUM_CPU_UPDATE_INTERVAL);
@@ -16,7 +16,7 @@ pub fn cpu_core_usage(core_index: i32) -> f32 {
     use num_cpus;
 
     let mut sys = System::new_with_specifics(
-        RefreshKind::new().with_cpu(CpuRefreshKind::new().with_cpu_usage()),
+        RefreshKind::nothing().with_cpu(CpuRefreshKind::nothing().with_cpu_usage()),
     );
 
     std::thread::sleep(sysinfo::MINIMUM_CPU_UPDATE_INTERVAL);

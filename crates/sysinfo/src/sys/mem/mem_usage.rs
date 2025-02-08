@@ -16,7 +16,7 @@ pub fn used_memory() -> u64 {
 
 pub fn memory_usage() -> f32 {
     let mut sys = System::new_with_specifics(
-        RefreshKind::new().with_memory(MemoryRefreshKind::new().with_ram()),
+        RefreshKind::nothing().with_memory(MemoryRefreshKind::nothing().with_ram()),
     );
     sys.refresh_memory();
 
@@ -28,7 +28,7 @@ pub fn memory_usage() -> f32 {
 
 pub fn total_swap() -> u64 {
     let mut sys = System::new_with_specifics(
-        RefreshKind::new().with_memory(MemoryRefreshKind::new().with_swap()),
+        RefreshKind::nothing().with_memory(MemoryRefreshKind::nothing().with_ram()),
     );
     sys.refresh_memory();
 
