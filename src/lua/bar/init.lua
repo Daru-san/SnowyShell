@@ -36,16 +36,16 @@ return function(gdkmonitor)
       Widget.Box({
         halign = "START",
         Workspaces(),
-      }),
-      Widget.Box({
         MediaPlayer(),
       }),
       Widget.Box({
+        Time("%H:%M:%S")
+      }),
+      Widget.Box({
         halign = "END",
-        SysStats(),
-        Indicators(),
         Tray(),
-        Time("%H:%M:%S"),
+        Indicators(),
+        SysStats(),
       }),
     }),
   })
