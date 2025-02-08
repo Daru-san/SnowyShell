@@ -6,7 +6,7 @@ use crate::sys::{
 use mlua::prelude::*;
 
 #[mlua::lua_module]
-fn snowy_utils(lua: &Lua) -> LuaResult<LuaTable> {
+fn sysinfo(lua: &Lua) -> LuaResult<LuaTable> {
     let mem_table = lua.create_table()?;
     mem_table.set("mem_usage", LuaFunction::wrap_raw::<_, ()>(memory_usage))?;
     mem_table.set("total_mem", LuaFunction::wrap_raw::<_, ()>(total_memory))?;
