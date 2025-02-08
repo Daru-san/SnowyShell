@@ -30,15 +30,15 @@ end
 
 local function mem_widget()
   local ram_usage = Variable(0):poll(2000, function()
-    local used = string.numbertosi(mem.used_memory()) .. 'MB';
-    local total = string.numbertosi(mem.total_memory()) .. 'MB';
+    local used = string.numbertosi(mem.used_mem()) .. 'B';
+    local total = string.numbertosi(mem.total_mem()) .. 'B';
     return tostring(used .. "/" .. total)
   end)
   return Widget.Box({
     class_name = "mem",
     Widget.Label({
       label = bind(ram_usage):as(function(value)
-        return tostring("mem: " .. math.round(value * 100) .. "%")
+        return tostring("mem: " .. value)
       end),
     }),
     on_destroy = function()
