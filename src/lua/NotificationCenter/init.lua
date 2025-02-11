@@ -13,7 +13,7 @@ return function(gdkmonitor)
 		anchor = Anchor.TOP + Anchor.RIGHT,
 		Widget.Box({
 			vertical = true,
-			visible = true,
+			visible = false,
 			Widget.Box({
 				Widget.Label({ class_name = "CenterHeader", label = "NotificationCenter" })
 			}),
