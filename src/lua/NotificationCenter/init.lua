@@ -7,25 +7,13 @@ local NotificationsList = require('lua.NotificationCenter.Notifications')
 
 local visible = Variable()
 
-local M = {}
-
-function M.toggle()
-	if visible then
-		visible:set(false)
-	else
-		visible:set(true)
-	end
-end
-
----comment
----@param gdkmonitor any
----@return unknown
-function M.Window(gdkmonitor)
+local Window = function(gdkmonitor)
 	local Anchor = astal.require("Astal").WindowAnchor
 
 	return Widget.Window({
 		class_name = "NotificationCenter",
 		gdkmonitor = gdkmonitor,
+		name = "NotificationCenter",
 		anchor = Anchor.TOP + Anchor.RIGHT,
 		Widget.Box({
 			vertical = true,
@@ -42,4 +30,4 @@ function M.Window(gdkmonitor)
 	})
 end
 
-return M
+return Window

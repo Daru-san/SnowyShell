@@ -4,7 +4,7 @@ local App = require("astal.gtk3.app")
 local Bar = require("lua.Bar.init")
 local NotifPopups = require("lua.Notifications.popups")
 local NotificationCenter = require('lua.NotificationCenter.init')
-local NotifCenter = NotificationCenter.Window
+local NotifCenter = NotificationCenter
 local src = require("lua.lib").src
 
 local scss = src("style.scss")
