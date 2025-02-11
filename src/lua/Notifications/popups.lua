@@ -2,7 +2,7 @@ local astal = require("astal")
 local Widget = require("astal.gtk3").Widget
 
 local Notifd = astal.require("AstalNotifd")
-local Notification = require("lua.notif.init")
+local Notification = require("lua.Notifications.init")
 local timeout = astal.timeout
 
 local TIMEOUT_DELAY = 5000
@@ -21,7 +21,7 @@ local function NotificationMap()
 				on_hover_lost = function() notif_map.delete(id) end,
 				setup = function()
 					timeout(TIMEOUT_DELAY, function()
-						NotificationMap.delete(id)
+						notif_map.delete(id)
 					end)
 				end,
 			})
