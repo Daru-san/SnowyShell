@@ -17,6 +17,9 @@ function M.toggle()
 	end
 end
 
+---comment
+---@param gdkmonitor any
+---@return unknown
 function M.Window(gdkmonitor)
 	local Anchor = astal.require("Astal").WindowAnchor
 
