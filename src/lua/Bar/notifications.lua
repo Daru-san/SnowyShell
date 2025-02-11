@@ -2,4 +2,11 @@ local astal = require("astal")
 
 local Widget = require("astal.gtk3").Widget
 
--- TODO: Notification button
+local NotificationCenter = require('lua.NotificationCenter.init')
+
+return function()
+    return Widget.Button({
+        class_name = "NotificationButton",
+        on_clicked = NotificationCenter.toggle()
+    })
+end
