@@ -13,6 +13,19 @@ window.NotificationPopups {
     all: unset;
 }
 
+window.NotificationCenter {
+    background-color: $bg-color;
+    border-radius: 13px;
+
+    >box {
+        border-radius: 13px;
+    }
+}
+
+label.CenterHeader {
+    font-size: 30px;
+}
+
 eventbox.Notification {
 
     &:first-child>box {
