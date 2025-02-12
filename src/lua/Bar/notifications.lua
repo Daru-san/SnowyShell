@@ -8,7 +8,9 @@ return function()
     return Widget.Box({
         Widget.Button({
             class_name = "NotificationButton",
-            on_click = App:toggle_window("NotificationCenter"),
+            on_clicked = function()
+                App:toggle_window("NotificationCenter")
+            end,
             Widget.Icon({
                 icon = "preferences-system-notifications"
             })
