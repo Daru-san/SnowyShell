@@ -2,7 +2,7 @@ local astal = require("astal")
 local bind = astal.bind
 local Widget = require("astal.gtk3.widget")
 local Network = astal.require("AstalNetwork")
-local AudioSlider = require("lua.bar.audio")
+local AudioSlider = require("lua.Bar.audio")
 
 local function Wifi()
   local wifi = Network.get_default().wifi
