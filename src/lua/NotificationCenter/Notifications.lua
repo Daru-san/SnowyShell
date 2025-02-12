@@ -30,6 +30,11 @@ return function()
 	return Widget.Box({
 		class_name = "NotificationCenter",
 		vertical = true,
-		notifs()
+		Widget.Scrollable({
+			height_request = 250,
+			Widget.Box({
+				notifs()
+			})
+		}),
 	})
 end
