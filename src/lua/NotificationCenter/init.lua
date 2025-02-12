@@ -12,8 +12,8 @@ return function(gdkmonitor)
 	local Anchor = astal.require("Astal").WindowAnchor
 
 	return Widget.Window({
-		class_name = "NotificationCenter",
 		name = "NotificationCenter",
+		class_name = "NotificationCenter",
 		gdkmonitor = gdkmonitor,
 		setup = function(self)
 			App:add_window(self)
@@ -22,13 +22,13 @@ return function(gdkmonitor)
 		anchor = Anchor.TOP + Anchor.RIGHT,
 		Widget.Box({
 			vertical = true,
-			visible = false,
 			Widget.Box({
 				Widget.Label({
 					class_name = "CenterHeader",
 					label = "NotificationCenter",
 				})
 			}),
+			MusicWidget(),
 			NotificationsList()
 		}),
 	})
