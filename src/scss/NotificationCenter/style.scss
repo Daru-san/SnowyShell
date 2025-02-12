@@ -1,0 +1,16 @@
+@use "sass:string";
+@import './music.scss';
+
+window.NotificationCenter {
+    background-color: $bg-color;
+    border-radius: 13px;
+
+    >box {
+        min-width: 450px;
+        border-radius: 13px;
+    }
+}
+
+label.CenterHeader {
+    font-size: 30px;
+}
