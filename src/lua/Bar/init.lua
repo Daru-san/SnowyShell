@@ -28,7 +28,7 @@ return function(gdkmonitor)
   local WindowAnchor = astal.require("Astal", "3.0").WindowAnchor
 
   return Widget.Window({
-    class_name = "bar",
+    class_name = "Bar",
     gdkmonitor = gdkmonitor,
     anchor = WindowAnchor.TOP + WindowAnchor.LEFT + WindowAnchor.RIGHT,
     exclusivity = "EXCLUSIVE",
