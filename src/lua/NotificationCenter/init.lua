@@ -20,10 +20,11 @@ return function(gdkmonitor)
 			App:add_window(self)
 			App:get_window(self.name).visible = false
 		end,
-		anchor = Anchor.TOP + Anchor.RIGHT,
+		anchor = Anchor.TOP,
 		Widget.Box({
 			vertical = true,
 			Widget.Box({
+				halign = "CENTER",
 				Widget.Label({
 					class_name = "CenterHeader",
 					label = "NotificationCenter",
