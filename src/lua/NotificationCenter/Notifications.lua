@@ -46,9 +46,9 @@ local function clearNotifications()
 		halign = "CENTER",
 		Widget.Button({
 			on_click = function()
-				local notifications = notifd.notifications
-				for notification in notifications do
-					notification.dismiss()
+				local notifications = notifd:get_notifications()
+				for _, notification in pairs(notifications) do
+					notification.dismiss(notification)
 				end
 			end,
 			Widget.Label({
