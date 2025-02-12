@@ -54,6 +54,7 @@
               rustc
               pkg-config
               clippy
+              dart-sass
               rustfmt
               (lua.withPackages (
                 ps: with ps; [
