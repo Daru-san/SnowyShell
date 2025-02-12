@@ -40,7 +40,7 @@ return function(gdkmonitor)
         MediaPlayer(),
       }),
       Widget.Box({
-        Time("%H:%M:%S"),
+        Time("%A, %d %B [%X]"),
         NotifButton()
       }),
       Widget.Box({
