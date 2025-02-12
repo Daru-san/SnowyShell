@@ -39,7 +39,8 @@ return function(gdkmonitor)
         MediaPlayer(),
       }),
       Widget.Box({
-        Time("%H:%M:%S")
+        Time("%H:%M:%S"),
+        NotifButton()
       }),
       Widget.Box({
         halign = "END",
