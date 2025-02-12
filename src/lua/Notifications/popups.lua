@@ -14,6 +14,10 @@ local function NotificationMap()
 	local notif_map = varmap({})
 
 	notifd.on_notified = function(_, id)
+		local notification = notifd:get_notification(id)
+		if notifd:get_dont_disturb() and (notification.urgency ~= Notifd.Urgency.Critical) then
+			return
+		end
 		notif_map.set(
 			id,
 			Notification({
