@@ -17,6 +17,7 @@ return function(gdkmonitor)
 		gdkmonitor = gdkmonitor,
 		setup = function(self)
 			App:add_window(self)
+			App:get_window(self.name).visible = false
 		end,
 		anchor = Anchor.TOP + Anchor.RIGHT,
 		Widget.Box({
