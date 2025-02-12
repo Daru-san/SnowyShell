@@ -68,10 +68,33 @@ return function()
 		class_name = "NotificationCenter",
 		vertical = true,
 		Widget.Scrollable({
-			height_request = 250,
+			height_request = 200,
+			vexpand = true,
+
 			Widget.Box({
-				notifs()
-			})
+				vertical = true,
+				vexpand = true,
+				hexpand = false,
+				spacing = 8,
+				notifs(),
+				Widget.Box({
+					halign = "CENTER",
+					valign = "CENTER",
+					vertical = true,
+					vexpand = true,
+					visible = bind(notifd, "notifications"):as(function(n)
+						local count = 0
+						for _ in pairs(n) do
+							count = count + 1
+						end
+						return count == 0
+					end),
+					Widget.Icon({
+						icon = "notifications-disabled-symbolic",
+					}),
+					Widget.Label({ label = "Inbox is empty" })
+				})
+			}),
 		}),
 		clearNotifications(),
 		DoNotDisturb()
