@@ -25,6 +25,39 @@ local function NotificationMap()
 	return notif_map
 end
 
+local function DoNotDisturb()
+	return Widget.Box({
+		class_name = "NotificationDND",
+		halign = "CENTER",
+		Widget.Label({
+			label = "Do Not Disturb"
+		}),
+		Widget.Switch({
+			on_activate = function(self)
+				notifd.set_dont_disturb(self.active)
+			end
+		})
+	})
+end
+
+local function clearNotifications()
+	return Widget.Box({
+		class_name = "NotificationClear",
+		halign = "CENTER",
+		Widget.Button({
+			on_click = function()
+				local notifications = notifd.notifications
+				for notification in notifications do
+					notification.dismiss()
+				end
+			end,
+			Widget.Label({
+				label = "Clear notifications",
+			})
+		})
+	})
+end
+
 return function()
 	local notifs = NotificationMap()
 	return Widget.Box({
@@ -36,5 +69,7 @@ return function()
 				notifs()
 			})
 		}),
+		clearNotifications(),
+		DoNotDisturb()
 	})
 end
