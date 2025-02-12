@@ -1,5 +1,6 @@
 local astal = require("astal")
 
+local bind = astal.bind
 local Widget = require("astal.gtk3").Widget
 
 local Notifd = astal.require("AstalNotifd")
@@ -33,8 +34,11 @@ local function DoNotDisturb()
 			label = "Do Not Disturb"
 		}),
 		Widget.Switch({
-			on_activate = function(self)
-				notifd.set_dont_disturb(self.active)
+			setup = function(self)
+				self.active = notifd:get_dont_disturb()
+			end,
+			on_state_set = function(self)
+				notifd:set_dont_disturb(self.active)
 			end
 		})
 	})
