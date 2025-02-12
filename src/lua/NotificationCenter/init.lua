@@ -3,6 +3,7 @@ local astal = require("astal")
 local Widget = require("astal.gtk3").Widget
 
 local NotificationsList = require('lua.NotificationCenter.Notifications')
+local MusicWidget = require('lua.NotificationCenter.Music')
 
 local App = require("astal.gtk3.app")
 
