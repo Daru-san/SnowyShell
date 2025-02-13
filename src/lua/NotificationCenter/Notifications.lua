@@ -1,5 +1,7 @@
 local astal = require("astal")
 
+local lib = require('lua.lib')
+
 local bind = astal.bind
 local Widget = require("astal.gtk3").Widget
 
@@ -83,11 +85,7 @@ return function()
 					vertical = true,
 					vexpand = true,
 					visible = bind(notifd, "notifications"):as(function(n)
-						local count = 0
-						for _ in pairs(n) do
-							count = count + 1
-						end
-						return count == 0
+						return lib.tablelen(n) == 0
 					end),
 					Widget.Icon({
 						icon = "notifications-disabled-symbolic",
