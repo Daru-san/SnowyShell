@@ -16,7 +16,6 @@ local function cpu_widget()
     return tonumber(cpu.cpu_usage())
   end)
   return Widget.Box({
-    class_name = "cpu",
     Widget.Label({
       label = bind(usage):as(function(value)
         return tostring("cpu: " .. math.round(value * 100, 0) .. "%")

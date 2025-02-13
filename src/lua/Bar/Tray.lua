@@ -9,7 +9,7 @@ local map = require("lua.lib").map
 
 return function()
   return Widget.Box({
-    class_name = "tray",
+    class_name = "Tray",
     bind(tray, "items"):as(function(items)
       return map(items, function(item)
         return Widget.MenuButton({

@@ -3,11 +3,11 @@ local Widget = require("astal.gtk3.widget")
 local Variable = astal.Variable
 local GLib = astal.require("GLib")
 
-local Tray = require("lua.Bar.tray")
-local Workspaces = require("lua.Bar.workspaces")
-local Indicators = require("lua.Bar.indicators")
-local SysStats = require("lua.Bar.stats")
-local NotifButton = require('lua.Bar.notifications')
+local Tray = require("lua.Bar.Tray")
+local Workspaces = require("lua.Bar.Workspaces")
+local QuickSettings = require("lua.Bar.QuickSettings")
+local SysStats = require("lua.Bar.Statistics")
+local NotifButton = require('lua.Bar.NotificationButton')
 
 local function Time(format)
   local time = Variable(""):poll(1000, function()
@@ -44,7 +44,7 @@ return function(gdkmonitor)
       Widget.Box({
         halign = "END",
         Tray(),
-        Indicators(),
+        QuickSettings(),
         SysStats(),
       }),
     }),
