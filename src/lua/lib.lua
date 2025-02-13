@@ -74,6 +74,8 @@ function M.varmap(initial)
   })
 end
 
+---@param table table
+---@return number
 function M.tablelen(table)
   local count = 0
   for _ in pairs(table) do
@@ -82,6 +84,8 @@ function M.tablelen(table)
   return count
 end
 
+---@param table table
+---@return nil
 function M.printfields(table)
   for k, v in pairs(table) do
     print(k, v)
