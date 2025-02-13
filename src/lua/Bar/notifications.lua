@@ -2,6 +2,8 @@ local astal = require("astal")
 
 local bind = astal.bind
 
+local lib = require('lua.lib')
+
 local Widget = require("astal.gtk3").Widget
 
 local Notifd = astal.require("AstalNotifd")
@@ -24,7 +26,12 @@ return function()
                         return "notifications-symbolic"
                     end
                 end)
-            })
+            }),
         }),
+        Widget.Label({
+            label = bind(notifd, "notifications"):as(function(notifs)
+                return tostring(lib.tablelen(notifs))
+            end)
+        })
     })
 end
