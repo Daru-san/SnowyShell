@@ -88,4 +88,38 @@ function M.printfields(table)
   end
 end
 
+---@param bool boolean
+---@return string
+function M.onoff(bool)
+  if bool then
+    return "on"
+  else
+    return "off"
+  end
+end
+
+---@param arr table
+---@return string
+function M.arrstringline(arr)
+  local text = ''
+  for _, item in pairs(arr) do
+    if text == '' then
+      text = item
+    else
+      text = text .. '\n' .. item
+    end
+  end
+  return text
+end
+
+---@param arr table
+---@return string
+function M.arrstring(arr)
+  local text = ''
+  for _, item in pairs(arr) do
+    text = text .. ' ' .. item
+  end
+  return text
+end
+
 return M
