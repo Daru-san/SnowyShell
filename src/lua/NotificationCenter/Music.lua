@@ -136,7 +136,6 @@ return function()
 	local mpris = Mpris.get_default()
 
 	return Widget.Stack({
-		-- height_request = 140,
 		children = bind(mpris, "players"):as(
 			function(players) return map(players, MediaPlayer) end
 		),
