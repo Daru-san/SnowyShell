@@ -82,4 +82,10 @@ function M.tablelen(table)
   return count
 end
 
+function M.printfields(table)
+  for k, v in pairs(table) do
+    print(k, v)
+  end
+end
+
 return M
