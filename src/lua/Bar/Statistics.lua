@@ -16,9 +16,10 @@ local function cpu_widget()
     return tonumber(cpu.cpu_usage())
   end)
   return Widget.Box({
+    class_name = "CPU",
     Widget.Label({
       label = bind(usage):as(function(value)
-        return tostring("cpu: " .. math.round(value * 100, 0) .. "%")
+        return tostring(math.round(value * 100, 0) .. "%")
       end),
     }),
     on_destroy = function()
@@ -34,10 +35,10 @@ local function mem_widget()
     return tostring(used .. "/" .. total)
   end)
   return Widget.Box({
-    class_name = "mem",
+    class_name = "Memory",
     Widget.Label({
       label = bind(ram_usage):as(function(value)
-        return tostring("mem: " .. value)
+        return tostring("" .. value)
       end),
     }),
     on_destroy = function()
@@ -58,7 +59,7 @@ local function net_widget()
   end)
 
   return Widget.Box({
-    class_name = "net",
+    class_name = "Network",
     Widget.Label({
       label = bind(net_tx):as(function(rx)
         bind(net_tx):as(function(tx)
@@ -75,7 +76,10 @@ end
 
 return function()
   return Widget.Box({
-    class_name = "stats",
+    class_name = "Statistics",
+    Widget.Icon({
+      icon = "utilities-system-monitor-symbolic"
+    }),
     -- net_widget(),
     cpu_widget(),
     mem_widget(),
