@@ -18,7 +18,8 @@ return function()
             on_clicked = function()
                 App:toggle_window("NotificationCenter")
             end,
-            Widget.Icon({
+            always_show_image = true,
+            image = Widget.Icon({
                 icon = bind(notifd, "dont-disturb"):as(function(dnd)
                     if dnd then
                         return "notifications-disabled-symbolic"
@@ -27,11 +28,9 @@ return function()
                     end
                 end)
             }),
-        }),
-        Widget.Label({
             label = bind(notifd, "notifications"):as(function(notifs)
                 return tostring(lib.tablelen(notifs))
-            end)
-        })
+            end),
+        }),
     })
 end
