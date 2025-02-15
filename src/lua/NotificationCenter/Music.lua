@@ -32,7 +32,11 @@ local function MediaPlayer(player)
 	)
 
 	local player_icon = bind(player, "entry"):as(
-		function(e) return lookup_icon(e) and e or "audio-x-generic-symbolic" end
+		function(e)
+			if e ~= nil then
+				return lookup_icon(e) and e or "audio-x-generic-symbolic"
+			end
+		end
 	)
 
 	local position = bind(player, "position"):as(
