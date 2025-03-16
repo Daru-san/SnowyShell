@@ -20,7 +20,7 @@ return function(gdkmonitor)
 			App:add_window(self)
 			App:get_window(self.name).visible = false
 		end,
-		anchor = Anchor.TOP,
+		anchor = Anchor.BOTTOM + Anchor.LEFT,
 		Widget.Box({
 			vertical = true,
 			Widget.Box({

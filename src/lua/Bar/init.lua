@@ -29,17 +29,17 @@ return function(gdkmonitor)
   return Widget.Window({
     class_name = "Bar",
     gdkmonitor = gdkmonitor,
-    anchor = WindowAnchor.TOP + WindowAnchor.LEFT + WindowAnchor.RIGHT,
+    anchor = WindowAnchor.BOTTOM + WindowAnchor.LEFT + WindowAnchor.RIGHT,
     exclusivity = "EXCLUSIVE",
 
     Widget.CenterBox({
       Widget.Box({
         halign = "START",
-        Workspaces(),
-      }),
-      Widget.Box({
         Time("%A, %d %B [%X]"),
         NotifButton()
+      }),
+      Widget.Box({
+        Workspaces(),
       }),
       Widget.Box({
         halign = "END",
