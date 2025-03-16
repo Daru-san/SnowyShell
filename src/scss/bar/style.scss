@@ -1,141 +1,135 @@
 @import './workspaces.scss';
 
+* {
+  all: unset;
+  font-weight: bold;
+}
+
+
 window.Bar {
-    border: none;
-    box-shadow: none;
-    background-color: $base00;
-    color: $base04;
-    border-radius: 10px;
-    font-size: $font-size;
-    font-weight: bold;
+  border: none;
+  box-shadow: none;
+  border-radius: 10px;
+  font-size: $font-size;
+  font-weight: bold;
 
-    button {
-        all: unset;
-        background-color: transparent;
+  padding: 0.4rem 1rem;
+  background-color: $bg;
+  color: $fg;
 
-        &:hover label {
-            background-color: transparentize($base02, 0.84);
-            border-color: transparentize($base04, 0.8);
-        }
+  button {
+    all: unset;
+    background-color: transparent;
 
-        &:active label {
-            background-color: transparentize($base02, 0.8);
-        }
+    &:hover label {
+      background-color: transparentize($base02, 0.84);
+      border-color: transparentize($base04, 0.8);
     }
+
+    &:active label {
+      background-color: transparentize($base02, 0.8);
+    }
+  }
+
+  label {
+    transition: 200ms;
+    padding: 0 8px;
+    margin: 2px;
+    border-radius: $radius;
+    border: 1pt solid transparent;
+  }
+
+  .Media .Cover {
+    min-height: 1.2em;
+    min-width: 1.2em;
+    border-radius: $radius;
+    background-position: center;
+    background-size: contain;
+  }
+
+  .NotificationButton {
+    border-radius: $radius;
 
     label {
-        transition: 200ms;
-        padding: 0 8px;
-        margin: 2px;
-        border-radius: $radius;
-        border: 1pt solid transparent;
+      font-size: 16px;
+      padding-left: 0px;
+      font-size: 3/4 * $font-size;
     }
 
-    .Media .Cover {
-        min-height: 1.2em;
-        min-width: 1.2em;
-        border-radius: $radius;
-        background-position: center;
-        background-size: contain;
+    icon {
+      padding-right: 0px;
+    }
+  }
+
+
+  .audio-slider {
+    min-width: 6.25em;
+    margin-right: 0.625em;
+
+    trough {
+      background-color: $base03;
+      border-radius: 10px;
     }
 
-    .NotificationButton {
-        border-radius: $radius;
-        background-color: shade($base09, 0.3);
+    highlight {
+      background-color: $base09;
+      min-height: 0.75em;
+      border-radius: 1.25em;
+    }
+  }
 
-        label {
-            font-size: 16px;
-            padding-left: 0px;
-            font-size: 3/4 * $font-size;
+  .Statistics {
+    border-radius: $radius;
+    padding-left: 3px;
+    margin-left: 5px;
+
+  }
+
+  .QuickSettings {
+    .QSBox {
+      margin-left: 5px;
+      padding-left: 6px;
+      border-radius: $radius;
+
+      .Wifi {
+        border-radius: $radius;
+      }
+
+      .Bluetooth {
+        border-radius: $radius;
+        padding-right: 2px;
+        padding-left: 3px;
+
+        .BluetoothIconConnected {
+          color: #FFAA22,
         }
+
+        .BluetoothIconOff {
+          color: #AA2233;
+        }
+
+        .BluetoothIconOn {
+          color: #AA33DD;
+        }
+      }
+
+      .Volume {
+        margin-right: 5px;
+        border-radius: $radius;
 
         icon {
-            padding-right: 0px;
+          padding-left: 5px;
         }
+      }
     }
 
+  }
 
-    .audio-slider {
-        min-width: 6.25em;
-        margin-right: 0.625em;
+  .Media {
+    padding-right: 3px;
+    padding-left: 3px;
+    border-radius: $radius;
 
-        trough {
-            background-color: $base03;
-            border-radius: 10px;
-        }
+  }
 
-        highlight {
-            background-color: $base09;
-            min-height: 0.75em;
-            border-radius: 1.25em;
-        }
-    }
-
-    .Statistics {
-        background-color: shade($base09, 0.3);
-        border-radius: $radius;
-        padding-left: 3px;
-        margin-left: 5px;
-
-        label {
-            background-color: shade($base09, 0.5);
-        }
-    }
-
-    .QuickSettings {
-        .QSBox {
-            margin-left: 5px;
-            padding-left: 6px;
-            background-color: shade($base0F, 0.5);
-            border-radius: $radius;
-
-            .Wifi {
-                border-radius: $radius;
-            }
-
-            .Bluetooth {
-                border-radius: $radius;
-                padding-right: 2px;
-                padding-left: 3px;
-
-                .BluetoothIconConnected {
-                    color: #FFAA22,
-                }
-
-                .BluetoothIconOff {
-                    color: #AA2233;
-                }
-
-                .BluetoothIconOn {
-                    color: #AA33DD;
-                }
-            }
-
-            .Volume {
-                background-color: shade($base0F, 0.3);
-                margin-right: 5px;
-                border-radius: $radius;
-
-                icon {
-                    padding-left: 5px;
-                }
-            }
-        }
-
-    }
-
-    .Media {
-        padding-right: 3px;
-        padding-left: 3px;
-        border-radius: $radius;
-        background-color: shade($base0B, 0.3);
-
-        label {
-            background-color: shade($base0D, 0.8);
-        }
-    }
-
-    .Time {
-        background-color: shade($base0F, 0.3);
-    }
 }

@@ -1,4 +1,14 @@
 .workspaces .focused label {
-  color: $base04;
-  border-color: $base08;
+  background-color: $active;
+  color: $bg;
+}
+
+.workspaces button {
+  border-radius: 13rem;
+  padding: 0 0.55rem;
+  transition: 0.3s;
+}
+
+.workspaces .hover {
+  background-color: lighten($bg, 10%);
 }
