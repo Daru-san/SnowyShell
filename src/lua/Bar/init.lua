@@ -36,7 +36,7 @@ return function(gdkmonitor)
 		Widget.CenterBox({
 			Widget.Box({
 				halign = "START",
-				Time("%A, %d %B [%X]"),
+				Time("(%a, %d %b) %X"),
 				NotifButton(),
 				Media(),
 			}),
