@@ -1,7 +1,7 @@
 # SnowyShell
 
 This project was a big inspiration that pushed me to create
-[crimson](https://codeberg.org/Daru-san/crimson), which is where this
+[crimson](https://gitlab.com/crimson-widgets/crimson), which is where this
 continuation of this `dream` will continue.
 
 ## Previous README
